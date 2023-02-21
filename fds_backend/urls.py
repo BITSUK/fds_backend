@@ -6,16 +6,9 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path("admin/", admin.site.urls),
-]
-
-urlpatterns += [
     path('fds/', include('restapp.urls')),
-]
-
-urlpatterns += [
     path('', RedirectView.as_view(url='admin/', permanent=True)),
 ]
 
