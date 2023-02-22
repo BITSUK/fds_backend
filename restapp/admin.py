@@ -3,20 +3,20 @@ from .models import Train, Station, Stop, Restaurant, RestMenu, Order, OrderItem
 
 # Controls the fields to display in admin panel
 class TrainAdmin(admin.ModelAdmin):
-    list_display = ('train_no', 'train_name')
+    list_display = ('id', 'train_no', 'train_name')
     
 class StationAdmin(admin.ModelAdmin):
-    list_display = ('station_code', 'station_name')
+    list_display = ('id', 'station_code', 'station_name')
     
 class StopAdmin(admin.ModelAdmin):
-    list_display = ('train_no', 'stop_no', 'station_code', 'arrival_time', 'departure_time', 'halt', 'day')    
+    list_display = ('id', 'train_no', 'stop_no', 'station_code', 'arrival_time', 'departure_time', 'halt', 'day')    
 
 class RestaurantAdmin(admin.ModelAdmin):
-    list_display = ('rest_id', 'rest_name', 'rest_address', 'rest_location_code', 'user_id', 
+    list_display = ('id', 'rest_id', 'rest_name', 'rest_address', 'rest_location_code', 'user_id', 
                     'rest_type','rest_status', 'rest_rating')
     
 class RestMenuAdmin(admin.ModelAdmin):
-    list_display = ('menu_id', 'rest_id', 'item_name', 'item_desc', 'item_type',
+    list_display = ('id', 'menu_id', 'rest_id', 'item_name', 'item_desc', 'item_type',
                     'item_rate', 'item_discount', 'item_rating', 'item_status')
 
 class OrderAdmin(admin.ModelAdmin):
@@ -26,11 +26,12 @@ class OrderAdmin(admin.ModelAdmin):
                     'total_discount', 'tax', 'net_amount')
 
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ('item_id', 'item_name', 'item_quantity' , 'item_rate' , 'item_discount' , 'order_id')
+    list_display = ('id', 'item_id', 'item_name', 'item_quantity' , 'item_rate' , 'item_discount' , 'order_id')
 
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ('payment_id' , 'order_id', 'payment_date' , 'payment_amount' , 
+    list_display = ('id', 'payment_id' , 'order_id', 'payment_date' , 'payment_amount' , 
                     'payment_mode' , 'payment_ref','payment_status')
+    
 
 # Register the models
 admin.site.register(Train, TrainAdmin)

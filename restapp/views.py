@@ -5,19 +5,20 @@ from django.contrib.auth.models import User, Group
 from restapp.models import Train, Station, Stop, Restaurant, RestMenu, Order, OrderItem, Payment
 
 from restapp.serializers import UserSerializer, GroupSerializer
-from restapp.serializers import TrainSerializer, StationSerializer, StopSerializer
+from restapp.serializers import TrainSerializer, StationSerializer, StopSerializer, TrainSerializer2
 from restapp.serializers import RestaurantSerializer, RestMenuSerializer
 from restapp.serializers import OrderSerializer, OrderItemSerializer, PaymentSerializer
 
-
-
+#===================================================================
+# Using Model View Set
+#===================================================================
 # Users 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-# User Groups
+# Groups
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
@@ -70,3 +71,67 @@ class PaymentViewSet(viewsets.ModelViewSet):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
     permission_classes = [permissions.IsAuthenticated]  
+
+
+#===================================================================
+# Using Generics API Views
+# GET POST   --> generics.ListCreateAPIView  
+# PUT DELETE --> generics.RetrieveUpdateDestroyAPIView
+#===================================================================
+
+from rest_framework import generics
+
+# User
+class UserList(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = PaymentSerializer
+
+# Group
+class GroupList(generics.ListCreateAPIView):
+    queryset = Group.objects.all()
+    serializer_class = PaymentSerializer
+
+#Train                                               
+class TrainList(generics.ListCreateAPIView):
+    queryset = Train.objects.all()
+    serializer_class = TrainSerializer
+
+class TrainDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Train.objects.all()
+    serializer_class = TrainSerializer2
+
+# Stations
+class StationList(generics.ListCreateAPIView):
+    queryset = Station.objects.all()
+    serializer_class = StationSerializer
+
+# Stop
+class StopList(generics.ListCreateAPIView):
+    queryset = Stop.objects.all()
+    serializer_class = StopSerializer
+
+# Restaurant
+class RestaurantList(generics.ListCreateAPIView):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantSerializer
+
+# Restaurant Menu
+class RestMenuList(generics.ListCreateAPIView):
+    queryset = RestMenu.objects.all()
+    serializer_class = RestMenuSerializer
+
+# Order
+class OrderList(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+# Order Item
+class OrderItemList(generics.ListCreateAPIView):
+    queryset = OrderItem.objects.all()
+    serializer_class = OrderItemSerializer
+
+# Payment
+class PaymentList(generics.ListCreateAPIView):
+    queryset = Payment.objects.all()
+    serializer_class = PaymentSerializer
+
