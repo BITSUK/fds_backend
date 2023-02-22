@@ -7,6 +7,9 @@
 		pip install djangorestframework
 		pip install django-cors-headers
 		pip install psycopg2
+		
+		
+		pip list
 
 		Note: we need this software installed on our machines for creating virtual environments
 		
@@ -31,8 +34,9 @@
 	
 # Create an App
 ---------------
-		cd fds_backend
-		django-admin startapp restapp
+	
+	cd fds_backend
+	django-admin startapp restapp
 
 # Commands to sync database
 ----------------------------
