@@ -1,6 +1,28 @@
 from django.db import models
 from django.urls import reverse
 
+# App User
+class AppUser(models.Model):    
+    user_id = models.CharField(max_length = 6)                                          #Example: UID001
+    user_name = models.CharField(max_length = 40,)                                     
+    user_email = models.CharField(max_length = 40,)     
+    user_password = models.CharField(max_length = 40,)  
+    ROLE_TYPE = (
+            ('1','customer'),
+            ('2','restaurant'),
+        )                                                                    
+    user_role = models.CharField(max_length = 1,choices=ROLE_TYPE,
+                                 blank=False,default=1)                                                                      
+
+    class Meta:
+        ordering = ['user_id']
+
+    def get_absolute_url(self):
+        return reverse('user_id', args=[str(self.id)])   
+        
+    def __str__(self):
+        return self.user_id
+    
 # Train Model
 class Train(models.Model):    
     train_no = models.CharField(max_length = 8)                                         #Example: 12926
@@ -38,7 +60,7 @@ class Stop(models.Model):
     arrival_time = models.CharField(max_length = 5)                                     #Example: 07:20
     departure_time = models.CharField(max_length = 5)                                   #Example: 07:25
     halt = models.CharField(max_length = 4)                                             #Example: 5m
-    day = models.CharField(max_length = 4)                                              #Example: Day 1
+    day = models.CharField(max_length = 5)                                              #Example: Day 1
 
     class Meta:
         ordering = ['train_no', 'stop_no']

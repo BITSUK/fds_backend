@@ -1,69 +1,60 @@
 from django.urls import include, path
 from rest_framework import routers
 from restapp import views
+from restapp import views_authentication
 
-#==================================================================================================================
-# Request router (browsable api's)                                  http://127.0.0.1:8000/fds/browse/api/trains 
-#==================================================================================================================
-router = routers.DefaultRouter()
-router.register(r'api/users', views.UserViewSet)         
-router.register(r'api/groups', views.GroupViewSet)       
-router.register(r'api/trains', views.TrainViewSet)   
-router.register(r'api/stations', views.StationViewSet)   
-router.register(r'api/stops', views.StopViewSet) 
-router.register(r'api/restaurants', views.RestaurantViewSet) 
-router.register(r'api/menuitems', views.RestMenuViewSet) 
-router.register(r'api/orders', views.OrderViewSet) 
-router.register(r'api/items', views.OrderItemViewSet) 
-router.register(r'api/payments', views.PaymentViewSet) 
+#============================================================================
+# API URL  http://127.0.0.1:8000/fds/rest/api/...
+#============================================================================
+urlpatterns = [                                 
 
-# Any pattern use router
-urlpatterns = [
-    path('browse/', include(router.urls)),
+    # Users
+    path('rest/api/users/', views.AppUserList.as_view()),               
+    path('rest/api/users/<int:pk>', views.AppUserDetail.as_view()),  
+    path('rest/api/users/registration/', views_authentication.RegisterAPI),
+    path('rest/api/users/login/', views_authentication.LoginAPI),
+    path('rest/api/users/change_password/', views_authentication.ChangePasswordAPI),
     
-    # to show login logout option
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))   
-]
 
-
-#=====================================================================================================================
-# REST API Endpoints                                                http://127.0.0.1:8000/fds/rest/api/...
-#=====================================================================================================================
-
-urlpatterns += [
-
-    path('rest/api/users/', views.UserList.as_view()),               # http://127.0.0.1:8000/fds/rest/api/users/   **NOT WORKING
-    path('rest/api/users/<int:pk>', views.UserDetail.as_view()),  
-
-    path('rest/api/groups/', views.GroupList.as_view()),             # http://127.0.0.1:8000/fds/rest/api/groups/  **NOT WORKING
-    path('rest/api/groups/<int:pk>', views.GroupDetail.as_view()),  
-    
-    path('rest/api/trains/', views.TrainList.as_view()),             # http://127.0.0.1:8000/fds/restapi/trains/    
+    # Trains
+    path('rest/api/trains/', views.TrainList.as_view()),             
     path('rest/api/trains/<int:pk>', views.TrainDetail.as_view()),  
 
-    path('rest/api/stations/', views.StationList.as_view()),         # http://127.0.0.1:8000/fds/rest/api/stations/
+    # Stations
+    path('rest/api/stations/', views.StationList.as_view()),         
     path('rest/api/stations/<int:pk>', views.StationDetail.as_view()),  
 
-    path('rest/api/stops/', views.StopList.as_view()),               # http://127.0.0.1:8000/fds/rest/api/stops/
+    # Stops
+    path('rest/api/stops/', views.StopList.as_view()),               
     path('rest/api/stops/<int:pk>', views.StopDetail.as_view()),  
 
-    path('rest/api/restaurants/', views.RestaurantList.as_view()),   # http://127.0.0.1:8000/fds/rest/api/restaurants/
+    # Restaurants
+    path('rest/api/restaurants/', views.RestaurantList.as_view()),   
     path('rest/api/restaurants/<int:pk>', views.RestaurantDetail.as_view()),  
 
-    path('rest/api/menuitems/', views.RestMenuList.as_view()),     # http://127.0.0.1:8000/fds/rest/api/menuitems/
+    # Menu Items
+    path('rest/api/menuitems/', views.RestMenuList.as_view()),       
     path('rest/api/menuitems/<int:pk>', views.RestMenuDetail.as_view()),  
 
-    path('rest/api/orders/', views.OrderList.as_view()),             # http://127.0.0.1:8000/fds/rest/api/orders/ 
+    # Orders
+    path('rest/api/orders/', views.OrderList.as_view()),             
     path('rest/api/orders/<int:pk>', views.OrderDetail.as_view()),  
 
-    path('rest/api/items/', views.OrderItemList.as_view()),          # http://127.0.0.1:8000/fds/rest/api/items/ 
+    # Order Items
+    path('rest/api/items/', views.OrderItemList.as_view()),          
     path('rest/api/items/<int:pk>', views.OrderItemDetail.as_view()),  
 
-    path('rest/api/payments/', views.PaymentList.as_view()),         # http://127.0.0.1:8000/fds/rest/api/payments/ 
+    # Payments
+    path('rest/api/payments/', views.PaymentList.as_view()),         
     path('rest/api/payments/<int:pk>', views.PaymentDetail.as_view()),  
 
- 
-    
+    # Users
+    path('rest/api/sysusers/', views.SysUserList.as_view()),               
+    path('rest/api/sysusers/<int:pk>', views.SysUserDetail.as_view()),  
+
+    # Groups
+    path('rest/api/sysgroups/', views.SysGroupList.as_view()),             
+    path('rest/api/sysgroups/<int:pk>', views.SysGroupDetail.as_view()), 
 
 ]
 
