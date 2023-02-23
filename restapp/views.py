@@ -1,11 +1,13 @@
 from rest_framework import viewsets
 from rest_framework import permissions
 
+
 from django.contrib.auth.models import User, Group
 from restapp.models import Train, Station, Stop, Restaurant, RestMenu, Order, OrderItem, Payment
 
 from restapp.serializers import UserSerializer, GroupSerializer
-from restapp.serializers import TrainSerializer, StationSerializer, StopSerializer, TrainSerializer2
+from restapp.serializers import TrainSerializer, StationSerializer, StopSerializer
+from restapp.serializers import TrainModelSerializer
 from restapp.serializers import RestaurantSerializer, RestMenuSerializer
 from restapp.serializers import OrderSerializer, OrderItemSerializer, PaymentSerializer
 
@@ -75,8 +77,8 @@ class PaymentViewSet(viewsets.ModelViewSet):
 
 #===================================================================
 # Using Generics API Views
-# GET POST   --> generics.ListCreateAPIView  
-# PUT DELETE --> generics.RetrieveUpdateDestroyAPIView
+# GET POST          --> generics.ListCreateAPIView  
+# GET/pk PUT DELETE --> generics.RetrieveUpdateDestroyAPIView
 #===================================================================
 
 from rest_framework import generics
@@ -84,12 +86,20 @@ from rest_framework import generics
 # User
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
-    serializer_class = PaymentSerializer
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 # Group
 class GroupList(generics.ListCreateAPIView):
     queryset = Group.objects.all()
-    serializer_class = PaymentSerializer
+    serializer_class = GroupSerializer
+
+class GroupDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
 
 #Train                                               
 class TrainList(generics.ListCreateAPIView):
@@ -98,10 +108,14 @@ class TrainList(generics.ListCreateAPIView):
 
 class TrainDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Train.objects.all()
-    serializer_class = TrainSerializer2
+    serializer_class = TrainSerializer
 
 # Stations
 class StationList(generics.ListCreateAPIView):
+    queryset = Station.objects.all()
+    serializer_class = StationSerializer
+
+class StationDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Station.objects.all()
     serializer_class = StationSerializer
 
@@ -110,8 +124,16 @@ class StopList(generics.ListCreateAPIView):
     queryset = Stop.objects.all()
     serializer_class = StopSerializer
 
+class StopDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Stop.objects.all()
+    serializer_class = StopSerializer
+
 # Restaurant
 class RestaurantList(generics.ListCreateAPIView):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantSerializer
+
+class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
 
@@ -120,8 +142,16 @@ class RestMenuList(generics.ListCreateAPIView):
     queryset = RestMenu.objects.all()
     serializer_class = RestMenuSerializer
 
+class RestMenuDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = RestMenu.objects.all()
+    serializer_class = RestMenuSerializer
+
 # Order
 class OrderList(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
@@ -130,8 +160,15 @@ class OrderItemList(generics.ListCreateAPIView):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
 
+class OrderItemDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = OrderItem.objects.all()
+    serializer_class = OrderItemSerializer
+
 # Payment
 class PaymentList(generics.ListCreateAPIView):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
 
+class PaymentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Payment.objects.all()
+    serializer_class = PaymentSerializer

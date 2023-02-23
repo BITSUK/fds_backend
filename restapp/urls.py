@@ -2,9 +2,9 @@ from django.urls import include, path
 from rest_framework import routers
 from restapp import views
 
-#==========================================================================================
-# Request router (browsable api's)   Example: http://127.0.0.1:8000/fds/browse/api/trains 
-#==========================================================================================
+#==================================================================================================================
+# Request router (browsable api's)                                  http://127.0.0.1:8000/fds/browse/api/trains 
+#==================================================================================================================
 router = routers.DefaultRouter()
 router.register(r'api/users', views.UserViewSet)         
 router.register(r'api/groups', views.GroupViewSet)       
@@ -27,27 +27,43 @@ urlpatterns = [
 
 
 #=====================================================================================================================
-# REST API's Endpoints                                               http://127.0.0.1:8000/fds/rest/api/...
+# REST API Endpoints                                                http://127.0.0.1:8000/fds/rest/api/...
 #=====================================================================================================================
 
 urlpatterns += [
 
     path('rest/api/users/', views.UserList.as_view()),               # http://127.0.0.1:8000/fds/rest/api/users/   **NOT WORKING
+    path('rest/api/users/<int:pk>', views.UserDetail.as_view()),  
+
     path('rest/api/groups/', views.GroupList.as_view()),             # http://127.0.0.1:8000/fds/rest/api/groups/  **NOT WORKING
+    path('rest/api/groups/<int:pk>', views.GroupDetail.as_view()),  
     
     path('rest/api/trains/', views.TrainList.as_view()),             # http://127.0.0.1:8000/fds/restapi/trains/    
+    path('rest/api/trains/<int:pk>', views.TrainDetail.as_view()),  
+
     path('rest/api/stations/', views.StationList.as_view()),         # http://127.0.0.1:8000/fds/rest/api/stations/
+    path('rest/api/stations/<int:pk>', views.StationDetail.as_view()),  
+
     path('rest/api/stops/', views.StopList.as_view()),               # http://127.0.0.1:8000/fds/rest/api/stops/
+    path('rest/api/stops/<int:pk>', views.StopDetail.as_view()),  
 
     path('rest/api/restaurants/', views.RestaurantList.as_view()),   # http://127.0.0.1:8000/fds/rest/api/restaurants/
-    path('rest/api/menuitems/', views.RestaurantList.as_view()),     # http://127.0.0.1:8000/fds/rest/api/menuitems/
+    path('rest/api/restaurants/<int:pk>', views.RestaurantDetail.as_view()),  
+
+    path('rest/api/menuitems/', views.RestMenuList.as_view()),     # http://127.0.0.1:8000/fds/rest/api/menuitems/
+    path('rest/api/menuitems/<int:pk>', views.RestMenuDetail.as_view()),  
 
     path('rest/api/orders/', views.OrderList.as_view()),             # http://127.0.0.1:8000/fds/rest/api/orders/ 
+    path('rest/api/orders/<int:pk>', views.OrderDetail.as_view()),  
+
     path('rest/api/items/', views.OrderItemList.as_view()),          # http://127.0.0.1:8000/fds/rest/api/items/ 
+    path('rest/api/items/<int:pk>', views.OrderItemDetail.as_view()),  
+
     path('rest/api/payments/', views.PaymentList.as_view()),         # http://127.0.0.1:8000/fds/rest/api/payments/ 
+    path('rest/api/payments/<int:pk>', views.PaymentDetail.as_view()),  
 
  
-    path('api/core/trains/<int:id>/', views.TrainDetail.as_view()),  # **NOT WORKING
+    
 
 ]
 
