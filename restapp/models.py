@@ -58,9 +58,9 @@ class Stop(models.Model):
     stop_no = models.CharField(max_length = 2)                                          #Example: 2
     station_code = models.CharField(max_length = 8)                                     #Example: RTM  
     # station_code = models.ForeignKey('Station', on_delete=models.SET_NULL, null=True) 
-    arrival_time = models.CharField(max_length = 5,null=True,blank=True)                #Example: 07:20
-    departure_time = models.CharField(max_length = 5,null=True,blank=True)              #Example: 07:25
-    halt = models.CharField(max_length = 4,null=True,blank=True)                        #Example: 5m
+    arrival_time = models.CharField(max_length = 5)                                     #Example: 07:20
+    departure_time = models.CharField(max_length = 5)                                   #Example: 07:25
+    halt = models.CharField(max_length = 4,)                                            #Example: 5m
     day = models.CharField(max_length = 5)                                              #Example: Day 1
 
     class Meta:
@@ -79,9 +79,9 @@ class Restaurant(models.Model):
     rest_address = models.CharField(max_length = 120)                                   #Example: 34, Street A, City B - 123456
     rest_location_code = models.CharField(max_length = 8)                               #Example: RTM
     # rest_location_code = models.ForeignKey('Station', on_delete=models.SET_NULL, null=True)  
-    user_id = models.CharField(max_length = 6)                                          #Example: UID002
-    contact_person = models.CharField(max_length = 40)                                  #Example: Jatin Kumar
-    contact_no = models.CharField(max_length = 10)                                      #Example: 9812398123
+    user_id = models.CharField(max_length = 6,default="-")                               #Example: UID002
+    contact_person = models.CharField(max_length = 40,default="-")                       #Example: Jatin Kumar
+    contact_no = models.CharField(max_length = 10,default="-")                           #Example: 9812398123
     REST_TYPE = (
             ('0','Veg'),
             ('1','Non-Veg'),
