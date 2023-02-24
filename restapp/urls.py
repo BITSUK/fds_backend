@@ -27,26 +27,32 @@ urlpatterns = [
     # Stops
     path('rest/api/stops/', views.StopList.as_view()),               
     path('rest/api/stops/<int:pk>', views.StopDetail.as_view()),  
+    path('rest/api/stops/filters/', views.FilteredStopList.as_view()),  
 
     # Restaurants
     path('rest/api/restaurants/', views.RestaurantList.as_view()),   
     path('rest/api/restaurants/<int:pk>', views.RestaurantDetail.as_view()),  
-
+    path('rest/api/restaurants/filters/', views.FilteredRestaurantList.as_view()),  
+    
     # Menu Items
     path('rest/api/menuitems/', views.RestMenuList.as_view()),       
     path('rest/api/menuitems/<int:pk>', views.RestMenuDetail.as_view()),  
+    path('rest/api/menuitems/filters/', views.FilteredMenuItemList.as_view()),  
 
     # Orders
     path('rest/api/orders/', views.OrderList.as_view()),             
     path('rest/api/orders/<int:pk>', views.OrderDetail.as_view()),  
+    path('rest/api/orders/filters/', views.FilteredOrderList.as_view()),  
 
     # Order Items
     path('rest/api/items/', views.OrderItemList.as_view()),          
     path('rest/api/items/<int:pk>', views.OrderItemDetail.as_view()),  
+    path('rest/api/items/filters/', views.FilteredOrderItemList.as_view()),  
 
     # Payments
     path('rest/api/payments/', views.PaymentList.as_view()),         
     path('rest/api/payments/<int:pk>', views.PaymentDetail.as_view()),  
+    path('rest/api/payments/filters/', views.FilteredPaymentList.as_view()),  
 
     # Users
     path('rest/api/sysusers/', views.SysUserList.as_view()),               

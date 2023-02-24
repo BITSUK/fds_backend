@@ -44,7 +44,7 @@ class RestaurantAdmin(admin.ModelAdmin):
                     'user_id', 
                     'rest_type',
                     'rest_status', 
-                    'rest_rating'
+                    'rest_rating',
                     )
     
 class RestMenuAdmin(admin.ModelAdmin):

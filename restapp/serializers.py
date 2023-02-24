@@ -20,7 +20,7 @@ class AppUserSerializer(serializers.ModelSerializer):
 
 # Train
 class TrainSerializer(serializers.ModelSerializer):
-    class Meta:
+    class Meta:        
         model = Train
         fields = ['id', 
                   'train_no',
@@ -62,7 +62,7 @@ class RestaurantSerializer(serializers.ModelSerializer):
                   'user_id',
                   'rest_type',
                   'rest_status', 
-                  'rest_rating'
+                  'rest_rating',
                   ]   
 
 # Restaurant Menu
