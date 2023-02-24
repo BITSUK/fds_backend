@@ -99,7 +99,6 @@ class PaymentAdmin(admin.ModelAdmin):
                     'payment_ref',
                     'payment_status'
                     )
-    
 
 # Register the models
 admin.site.register(AppUser, AppUserAdmin)

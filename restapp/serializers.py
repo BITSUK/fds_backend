@@ -3,9 +3,6 @@ from rest_framework import serializers
 from django.contrib.auth.models import User, Group
 from restapp.models import AppUser, Train, Station, Stop, Restaurant, RestMenu, Order, OrderItem, Payment
 
-
-
-
 # App User 
 class AppUserSerializer(serializers.ModelSerializer):
     class Meta:

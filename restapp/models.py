@@ -11,8 +11,7 @@ class AppUser(models.Model):
             ('1','customer'),
             ('2','restaurant'),
         )                                                                    
-    user_role = models.CharField(max_length = 1,choices=ROLE_TYPE,
-                                 blank=False,default=1)                                                                      
+    user_role = models.CharField(max_length = 1,choices=ROLE_TYPE,blank=False,default=1)     
 
     class Meta:
         ordering = ['user_id']
@@ -79,8 +78,7 @@ class Restaurant(models.Model):
     rest_name = models.CharField(max_length = 40,help_text='Restaurant Name')           #Example: Haldiram
     rest_address = models.CharField(max_length = 120)                                   #Example: 34, Street A, City B - 123456
     rest_location_code = models.CharField(max_length = 8)                               #Example: RTM
-    # rest_location_code = models.ForeignKey('Station', 
-    #                                        on_delete=models.SET_NULL, null=True)      
+    # rest_location_code = models.ForeignKey('Station', on_delete=models.SET_NULL, null=True)  
     user_id = models.CharField(max_length = 6)                                          #Example: UID002
     contact_person = models.CharField(max_length = 40)                                  #Example: Jatin Kumar
     contact_no = models.CharField(max_length = 10)                                      #Example: 9812398123
@@ -88,16 +86,13 @@ class Restaurant(models.Model):
             ('0','Veg'),
             ('1','Non-Veg'),
         )                                            
-    rest_type = models.CharField(max_length = 1,choices=REST_TYPE,
-                                 blank=False,default='0')                               #Example: 0-Veg / 1-Non-veg
+    rest_type = models.CharField(max_length = 1,choices=REST_TYPE,blank=False,default='0')   
     rest_rating = models.IntegerField(default=0)                                        #Example: 4
-
     REST_STATUS = (
             ('1', 'Open'),
             ('0', 'Closed'),
         )
-    rest_status = models.CharField(max_length = 1, 
-                                   choices=REST_STATUS, blank=False,default='1')        #Example: 1-Open , 0-Close
+    rest_status = models.CharField(max_length = 1,choices=REST_STATUS, blank=False,default='1')  
 
     class Meta:
         ordering = ['rest_name']
@@ -119,8 +114,7 @@ class RestMenu(models.Model):
             ('0','Veg'),
             ('1','Non-Veg'),
         )
-    item_type = models.CharField(max_length = 1,choices=ITEM_TYPE,
-                                 blank=False,default='0')                               #Example: 0-Veg / 1-Non-veg
+    item_type = models.CharField(max_length = 1,choices=ITEM_TYPE,blank=False,default='0') 
     item_rate = models.DecimalField(max_digits=6, decimal_places=2)                     #Example: 25.00
     item_discount = models.DecimalField(max_digits=6, decimal_places=2)                 #Example: -3:25
     item_rating = models.IntegerField(default=0)                                        #Example: 4
@@ -128,9 +122,7 @@ class RestMenu(models.Model):
             ('1', 'Available'),
             ('0', 'Unavailable'),
         )
-    
-    item_status = models.CharField(max_length = 1,
-                                   choices=MENU_ITEM_STATUS, blank=False,default='1')   #Example: 1-Available ,0-Unavailable
+    item_status = models.CharField(max_length = 1,choices=MENU_ITEM_STATUS, blank=False,default='1')
     
     class Meta:
         ordering = ['item_name']
@@ -157,20 +149,19 @@ class Order(models.Model):
     coach_no = models.CharField(max_length = 4)                                         #Example: B1
     seat_no = models.IntegerField(default=0)                                            #Example: 22
     ORDER_STATUS = (
-            ('0', 'Initial'),
-            ('1', 'Paid'), 
-            ('2', 'Pending'),
-            ('3', 'Accepted'),
-            ('4', 'Rejected'),
-            ('5', 'Preparing Food'),
-            ('6', 'Order Ready'),
-            ('7', 'In Transit'),
-            ('8', 'Delivered'),
-            ('9', 'Delivery Failed'),
+            ('0' , 'Initial'),
+            ('1' , 'Paid'), 
+            ('2' , 'Pending'),
+            ('3' , 'Accepted'),
+            ('4' , 'Rejected'),
+            ('5' , 'Preparing Food'),
+            ('6' , 'Order Ready'),
+            ('7' , 'In Transit'),
+            ('8' , 'Delivered'),
+            ('9' , 'Delivery Failed'),
             ('10', 'Cancelled'),
         )
-    order_status = models.CharField(max_length = 2,choices=ORDER_STATUS, 
-                                    blank=False,default='0')                            #Example: 0,1,2,...
+    order_status = models.CharField(max_length = 2,choices=ORDER_STATUS,blank=False,default='0') 
     item_count = models.IntegerField(default=0)                                         #Example: 4
     total_amount = models.DecimalField(max_digits=6, decimal_places=2)                  #Example: 300:50
     total_discount = models.DecimalField(max_digits=6, decimal_places=2)                #Example: -40:00
@@ -218,8 +209,7 @@ class Payment(models.Model):
             ('1', 'Success'),
             ('0', 'Failed'),
         )
-    payment_status = models.CharField(max_length = 1,choices=PAYMENT_STATUS, 
-                                      blank=False, default='0')                      #Example: 1-Success / 0-Failed 
+    payment_status = models.CharField(max_length = 1,choices=PAYMENT_STATUS,blank=False, default='0')  
 
     class Meta:
         ordering = ['payment_id']

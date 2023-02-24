@@ -13,7 +13,7 @@ from restapp.serializers import OrderSerializer, OrderItemSerializer, PaymentSer
 
 from rest_framework import generics
 
-# App User 
+# User (App User)
 class AppUserList(generics.ListCreateAPIView):
     queryset = AppUser.objects.all()
     serializer_class = AppUserSerializer
@@ -42,14 +42,7 @@ class StationDetail(generics.RetrieveUpdateDestroyAPIView):
 
 # Stop
 class StopList(generics.ListCreateAPIView):
-    queryset = Stop.objects.all()
-    serializer_class = StopSerializer
-
-class StopDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Stop.objects.all()
-    serializer_class = StopSerializer
-
-class FilteredStopList(generics.ListAPIView):
+    # queryset = Stop.objects.all()
     serializer_class = StopSerializer
     def get_queryset(self):
         queryset = Stop.objects.all()
@@ -60,18 +53,15 @@ class FilteredStopList(generics.ListAPIView):
         if (station is not None):
             queryset = queryset.filter(station_code = station)
         return queryset
-        
+
+class StopDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = StopSerializer
+    queryset = Stop.objects.all()
+       
 # Restaurant
 class RestaurantList(generics.ListCreateAPIView):
-    queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
-
-class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Restaurant.objects.all()
-    serializer_class = RestaurantSerializer
-
-class FilteredRestaurantList(generics.ListAPIView):
-    serializer_class = RestaurantSerializer
+    # queryset = Restaurant.objects.all()
     def get_queryset(self):
         queryset = Restaurant.objects.all()
         station = self.request.query_params.get('station_code', None)
@@ -88,17 +78,14 @@ class FilteredRestaurantList(generics.ListAPIView):
             queryset = queryset.filter(rest_status = status)
         return queryset
 
+class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantSerializer
+
 # Restaurant Menu
 class RestMenuList(generics.ListCreateAPIView):
-    queryset = RestMenu.objects.all()
     serializer_class = RestMenuSerializer
-
-class RestMenuDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = RestMenu.objects.all()
-    serializer_class = RestMenuSerializer
-
-class FilteredMenuItemList(generics.ListAPIView):
-    serializer_class = RestMenuSerializer
+    # queryset = RestMenu.objects.all()
     def get_queryset(self):
         queryset = RestMenu.objects.all()
         rest = self.request.query_params.get('rest_id', None)
@@ -106,17 +93,14 @@ class FilteredMenuItemList(generics.ListAPIView):
             queryset = queryset.filter(rest_id = rest)
         return queryset
 
+class RestMenuDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = RestMenu.objects.all()
+    serializer_class = RestMenuSerializer
+
 # Order
 class OrderList(generics.ListCreateAPIView):
-    queryset = Order.objects.all()
     serializer_class = OrderSerializer
-
-class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
-
-class FilteredOrderList(generics.ListAPIView):
-    serializer_class = OrderSerializer
+    # queryset = Order.objects.all()
     def get_queryset(self):
         queryset = Order.objects.all()
         user = self.request.query_params.get('user_id', None)
@@ -132,36 +116,30 @@ class FilteredOrderList(generics.ListAPIView):
         if (status is not None):
             queryset = queryset.filter(order_status = status)
         return queryset
-    
+
+class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+ 
 # Order Item
 class OrderItemList(generics.ListCreateAPIView):
-    queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
-
-class OrderItemDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = OrderItem.objects.all()
-    serializer_class = OrderItemSerializer
-
-class FilteredOrderItemList(generics.ListAPIView):
-    serializer_class = OrderItemSerializer
+    # queryset = OrderItem.objects.all()
     def get_queryset(self):
         queryset = OrderItem.objects.all()
         order = self.request.query_params.get('order_id', None)
         if (order is not None):
             queryset = queryset.filter(order_id = order)
         return queryset
+
+class OrderItemDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = OrderItem.objects.all()
+    serializer_class = OrderItemSerializer
     
 # Payment
 class PaymentList(generics.ListCreateAPIView):
-    queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
-
-class PaymentDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Payment.objects.all()
-    serializer_class = PaymentSerializer
-
-class FilteredPaymentList(generics.ListAPIView):
-    serializer_class = PaymentSerializer
+    # queryset = Payment.objects.all()
     def get_queryset(self):
         queryset = Payment.objects.all()
         order = self.request.query_params.get('order_id', None)
@@ -171,7 +149,11 @@ class FilteredPaymentList(generics.ListAPIView):
         if (status is not None):
             queryset = queryset.filter(order_status = status)
         return queryset
-    
+
+class PaymentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Payment.objects.all()
+    serializer_class = PaymentSerializer
+
 # Sys User 
 class SysUserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
