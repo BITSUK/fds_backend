@@ -58,9 +58,9 @@ class Stop(models.Model):
     stop_no = models.CharField(max_length = 2)                                          #Example: 2
     station_code = models.CharField(max_length = 8)                                     #Example: RTM  
     # station_code = models.ForeignKey('Station', on_delete=models.SET_NULL, null=True) 
-    arrival_time = models.CharField(max_length = 5)                                     #Example: 07:20
-    departure_time = models.CharField(max_length = 5)                                   #Example: 07:25
-    halt = models.CharField(max_length = 4)                                             #Example: 5m
+    arrival_time = models.CharField(max_length = 5,null=True,blank=True)                #Example: 07:20
+    departure_time = models.CharField(max_length = 5,null=True,blank=True)              #Example: 07:25
+    halt = models.CharField(max_length = 4,null=True,blank=True)                        #Example: 5m
     day = models.CharField(max_length = 5)                                              #Example: Day 1
 
     class Meta:
