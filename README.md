@@ -20,7 +20,7 @@ To run the project you need Node and npm installed.
 7. pip install psycopg2    
 8. Run the backend server
 
-## TEST
+## Test users
 
 1. UID001 (Customer) - password: BITS2023$
 2. UID002 (Restaurant) - password: BITS2023$
