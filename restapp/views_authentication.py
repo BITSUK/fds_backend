@@ -54,16 +54,16 @@ def RegisterUserAPI(request):
 @api_view(['GET'])
 def LoginAPI(request):
 	if request.method == 'GET':
-		# user_data = JSONParser().parse(request)
 		user_id = request.query_params.get('user_id', None)
 		user_password = request.query_params.get('user_password', None)
 		user_role = request.query_params.get('user_role', None)
+
+		# user_data = JSONParser().parse(request)
 		# user_id = user_data['user_id']
 		# user_password = user_data['user_password']	
 		# user_role = user_data['user_role']	
 
 		if user_id is not None and user_password is not None and user_role is not None:	
-			
 			users = AppUser.objects.all()
 			users = users.filter(user_id__icontains=user_id) 	
 			users = users.filter(user_password__icontains=user_password) 	

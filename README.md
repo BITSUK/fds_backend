@@ -18,7 +18,9 @@ To run the project you need Node and npm installed.
 5. pip install djangorestframework
 6. pip install django-cors-headers
 7. pip install psycopg2    
-8. Run the backend server
+8. pip install -U drf-yasg
+9. pip install django-cors-headers
+10. Run the backend server
 
 ## Test users
 
