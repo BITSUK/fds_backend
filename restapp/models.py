@@ -6,6 +6,7 @@ class AppUser(models.Model):
     user_id = models.CharField(max_length = 6)                                          #Example: UID001
     user_name = models.CharField(max_length = 40,)                                     
     user_email = models.CharField(max_length = 40,)     
+    user_mobile = models.CharField(max_length = 10,) 
     user_password = models.CharField(max_length = 40,)  
     ROLE_TYPE = (
             ('1','customer'),

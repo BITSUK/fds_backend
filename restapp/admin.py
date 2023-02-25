@@ -8,6 +8,7 @@ class AppUserAdmin(admin.ModelAdmin):
                     'user_id', 
                     'user_name',
                     'user_email',
+                    'user_mobile',
                     'user_password',
                     'user_role',
                     )

@@ -11,7 +11,7 @@ class AppUserSerializer(serializers.ModelSerializer):
                   'user_id', 
                   'user_name',
                   'user_email',
-                # 'user_password',
+                  'user_mobile',
                   'user_role', 
                   ]
 
