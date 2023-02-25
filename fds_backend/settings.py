@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "rest_framework",
     'restapp.apps.RestappConfig',     
     # "restapp",
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
