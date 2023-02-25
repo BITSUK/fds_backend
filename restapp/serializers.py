@@ -12,6 +12,7 @@ class AppUserSerializer(serializers.ModelSerializer):
                   'user_name',
                   'user_email',
                   'user_mobile',
+                  'user_password',
                   'user_role', 
                   ]
 
@@ -57,6 +58,8 @@ class RestaurantSerializer(serializers.ModelSerializer):
                   'rest_address', 
                   'rest_location_code', 
                   'rest_owner',
+                  'contact_person',
+                  'contact_no',
                   'rest_type',
                   'rest_status', 
                   'rest_rating',

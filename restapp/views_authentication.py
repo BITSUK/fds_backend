@@ -6,8 +6,8 @@ from rest_framework.decorators import api_view
 
 import json
 
-from restapp.models import AppUser
-from restapp.serializers import AppUserSerializer
+from restapp.models import AppUser, Restaurant
+from restapp.serializers import AppUserSerializer, RestaurantSerializer
 
 #============================================================================================
 # User registration using custom endpoint
@@ -22,31 +22,42 @@ def RegisterUserAPI(request):
 		user_email = new_user_data['user_email']
 		user_password = new_user_data['user_password']	
 		user_role = new_user_data['user_role']	
+		rest_id = new_user_data['rest_id']
 
 		if user_id is not None and user_name is not None and user_role is not None and user_password is not None:	
 			users = AppUser.objects.all()
 			users = users.filter(user_id__icontains = user_id) 		
-			
-			if(len(users) == 0):										# Check if user already exists
-				if (user_email is None):								# Validate email, pending
-					if (user_role == "1" or user_role == "2"):			# Validate role
-						serializer = AppUserSerializer(data=new_user_data)					
+			rests = Restaurant.objects.all()
+			rests = rests.filter(rest_id__icontains = rest_id) 
 
-						# OK
-						if serializer.is_valid():
-							serializer.save()
+			# last_uid = users.reverse()[0].user_id
+			# next_uid = last_uid[0:3] + str(int(last_uid[3:]) + 1)
+			# user_id = next_uid
+
+			if (len(users) == 0) :	                                # Check if record already exists
+				if (user_role == "1" or user_role == "2"):			# Validate role
+					serializer = AppUserSerializer(data=new_user_data)					
+					if serializer.is_valid():
+
+						if ((user_role == "2") and (len(rests) == 0)):                  # check for creating restaurant record
+							rest_serializer = RestaurantSerializer(data=new_user_data)	
+							if rest_serializer.is_valid():
+								serializer.save()                                       # User created
+								rest_serializer.save()                                  # Restaurant created
+								return JsonResponse(serializer.data, status=status.HTTP_201_CREATED) 
+							else:
+								return JsonResponse({'message': 'Registration Failed.'}, status=status.HTTP_400_BAD_REQUEST) 
+						else:
+							serializer.save()                                           # User created 
 							return JsonResponse(serializer.data, status=status.HTTP_201_CREATED) 
-						# NOT OK
-						return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-					
 					else:
-						return JsonResponse({'message': 'Role Not supported.'}, status=status.HTTP_204_NO_CONTENT)       	
+						return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 				else:
-					JsonResponse({'message': 'Invalid email.'}, status=status.HTTP_204_NO_CONTENT)  
+					return JsonResponse({'message': 'Role Not supported.'}, status=status.HTTP_400_BAD_REQUEST)       	
 			else:
-				return JsonResponse({'message': 'User already exists.'}, status=status.HTTP_204_NO_CONTENT)       
+				return JsonResponse({'message': 'User already exists.'}, status=status.HTTP_400_BAD_REQUEST) 
 		else:
-			return JsonResponse({'message': 'Check the registration details, not valid.'}, status=status.HTTP_204_NO_CONTENT)  
+			return JsonResponse({'message': 'Check the registration details, not valid.'}, status=status.HTTP_400_BAD_REQUEST)  
 
 #============================================================================================
 # Login 

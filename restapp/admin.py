@@ -42,7 +42,9 @@ class RestaurantAdmin(admin.ModelAdmin):
                     'rest_name', 
                     'rest_address', 
                     'rest_location_code', 
-                    'rest_owner', 
+                    'rest_owner',
+                    'contact_person',
+                    'contact_no', 
                     'rest_type',
                     'rest_status', 
                     'rest_rating',
@@ -62,7 +64,8 @@ class RestMenuAdmin(admin.ModelAdmin):
                     )
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 
+    list_display = ('id',
+                    'order_id', 
                     'rest_id', 
                     'order_date', 
                     'delivery_date', 

@@ -49,7 +49,9 @@ def RegisterRestAPI(request):
 				return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 		else:
 				return JsonResponse({'message': 'Mandatory details missing.'}, status=status.HTTP_204_NO_CONTENT)  
-
+	else:
+		return JsonResponse({'message': 'Request method error'}, status=status.HTTP_204_NO_CONTENT)  
+	
 #============================================================================================
 # Order creation using custom endpoint
 #============================================================================================

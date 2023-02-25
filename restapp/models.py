@@ -3,7 +3,7 @@ from django.urls import reverse
 
 # App User
 class AppUser(models.Model):    
-    user_id = models.CharField(max_length = 6)                                          #Example: UID001
+    user_id = models.CharField(max_length = 15)                                          #Example: UID001
     user_name = models.CharField(max_length = 40,)                                     
     user_email = models.CharField(max_length = 40,)     
     user_mobile = models.CharField(max_length = 10,) 
@@ -75,12 +75,12 @@ class Stop(models.Model):
     
 # Restaurant Model
 class Restaurant(models.Model):    
-    rest_id = models.CharField(max_length = 6)                                          #Example: RID001  (RID999)
+    rest_id = models.CharField(max_length = 15)                                          #Example: RID001  (RID999)
     rest_name = models.CharField(max_length = 40,help_text='Restaurant Name')           #Example: Haldiram
     rest_address = models.CharField(max_length = 120)                                   #Example: 34, Street A, City B - 123456
     rest_location_code = models.CharField(max_length = 8)                               #Example: RTM
     # rest_location_code = models.ForeignKey('Station', on_delete=models.SET_NULL, null=True)  
-    rest_owner = models.CharField(max_length = 6,default="-")                           #Example: UID002
+    rest_owner = models.CharField(max_length = 15,default="-")                           #Example: UID002
     contact_person = models.CharField(max_length = 40,default="-")                      #Example: Jatin Kumar
     contact_no = models.CharField(max_length = 10,default="-")                          #Example: 9812398123
     REST_TYPE = (
@@ -106,8 +106,8 @@ class Restaurant(models.Model):
 
 # Menu Model
 class RestMenu(models.Model):    
-    menu_id = models.CharField(max_length = 10)                                         #Example: MID001I001 (MID999I999)
-    rest_id = models.CharField(max_length = 6)                                          #Example: RID001  (RID999)
+    menu_id = models.CharField(max_length = 20)                                         #Example: MID001I001 (MID999I999)
+    rest_id = models.CharField(max_length = 15)                                          #Example: RID001  (RID999)
     # rest_id = models.ForeignKey('Restaurant', on_delete=models.SET_NULL, null=True)   
     item_name = models.CharField(max_length = 40)                                       #Example: Thali
     item_desc = models.CharField(max_length = 120)                                      #Example: 3 Chapati, Rice, Tadka Dal, Mix Veg, Salad, Sweets
@@ -136,12 +136,12 @@ class RestMenu(models.Model):
 
 # Order Model
 class Order(models.Model):    
-    order_id = models.CharField(max_length = 10)                                        #Example: OID2300001 (OIDYY99999)
-    rest_id = models.CharField(max_length = 6)                                          #Example: RID001  (RID999)
+    order_id = models.CharField(max_length = 15)                                        #Example: OID2300001 (OIDYY99999)
+    rest_id = models.CharField(max_length = 15)                                          #Example: RID001  (RID999)
     # rest_id = models.ForeignKey('Restaurant', on_delete=models.SET_NULL, null=True)   
     order_date = models.DateField(null=True, blank=False)                               #Example: 02-02-2023
     delivery_date = models.DateField(null=True, blank=False)                            #Example: 02-02-2023
-    user_id = models.CharField(max_length = 6)                                          #Example: UID001
+    user_id = models.CharField(max_length = 15)                                          #Example: UID001
     contact_no = models.CharField(max_length = 10)                                      #Example: 9812398123
     station_code = models.CharField(max_length = 8)                                     #Example: RTM  
     train_no = models.CharField(max_length = 8)                                         #Example: 12926
@@ -180,12 +180,12 @@ class Order(models.Model):
 
 # Item Model
 class OrderItem(models.Model):    
-    item_id = models.CharField(max_length = 8)                                      #Example: OITM0001 (OITM9999)
+    item_id = models.CharField(max_length = 10)                                      #Example: OITM0001 (OITM9999)
     item_name = models.CharField(max_length = 40)                                   #Example: Thali
     item_quantity = models.IntegerField(default=0)                                  #Example: 2
     item_rate = models.DecimalField(max_digits=6, decimal_places=2)                 #Example: 25.00
     item_discount = models.DecimalField(max_digits=6, decimal_places=2)             #Example: -3:25
-    order_id = models.CharField(max_length = 10)                                    #Example: OID2300001 (OIDYY99999)
+    order_id = models.CharField(max_length = 15)                                    #Example: OID2300001 (OIDYY99999)
     # order_id = models.ForeignKey('Order', on_delete=models.SET_NULL, null=True)     
 
     class Meta:
@@ -199,8 +199,8 @@ class OrderItem(models.Model):
 
 # Payment Model
 class Payment(models.Model):    
-    payment_id = models.CharField(max_length = 12)                                  #Example: PID23000001 (PIDYY0099999)
-    order_id = models.CharField(max_length = 10)                                    #Example: OID2300001 (OIDYY99999)
+    payment_id = models.CharField(max_length = 15)                                  #Example: PID23000001 (PIDYY0099999)
+    order_id = models.CharField(max_length = 15)                                    #Example: OID2300001 (OIDYY99999)
     # order_id = models.ForeignKey('Order', on_delete=models.SET_NULL, null=True)  
     payment_date = models.DateField(null=True, blank=False)                         #Example: 02-02-2023
     payment_amount = models.DecimalField(max_digits=6, decimal_places=2)            #Example: 25.00
