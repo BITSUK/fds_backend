@@ -2,6 +2,7 @@ from django.urls import include, path
 from rest_framework import routers
 from restapp import views
 from restapp import views_authentication
+from restapp import views_custom
 
 #============================================================================
 # API URL                      http://127.0.0.1:8000/fds/rest/api/...
@@ -9,11 +10,11 @@ from restapp import views_authentication
 urlpatterns = [                                 
 
     # Users
-    path('rest/api/users/', views.AppUserList.as_view()),               
+    path('rest/api/users/', views.AppUserList.as_view()),                                  
     path('rest/api/users/<int:pk>', views.AppUserDetail.as_view()),  
-    path('rest/api/users/registration/', views_authentication.RegisterAPI),
-    path('rest/api/users/login/', views_authentication.LoginAPI),
-    path('rest/api/users/change_password/', views_authentication.ChangePasswordAPI),
+    path('rest/api/users/registration/', views_authentication.RegisterUserAPI),            # Custom endpoint
+    path('rest/api/users/login/', views_authentication.LoginAPI),                          # Custom endpoint
+    path('rest/api/users/change_password/', views_authentication.ChangePasswordAPI),       # Custom endpoint
 
     # Trains
     path('rest/api/trains/', views.TrainList.as_view()),             
@@ -29,15 +30,17 @@ urlpatterns = [
 
     # Restaurants
     path('rest/api/restaurants/', views.RestaurantList.as_view()),   
-    path('rest/api/restaurants/<int:pk>', views.RestaurantDetail.as_view()),  
+    path('rest/api/restaurants/<int:pk>', views.RestaurantDetail.as_view()), 
+    path('rest/api/restaurants/registration/', views_custom.RegisterRestAPI),          # Custom endpoint 
     
     # Menu Items
     path('rest/api/menuitems/', views.RestMenuList.as_view()),       
     path('rest/api/menuitems/<int:pk>', views.RestMenuDetail.as_view()),  
 
     # Orders
-    path('rest/api/orders/', views.OrderList.as_view()),             
+    path('rest/api/orders/', views.OrderList.as_view()),                           
     path('rest/api/orders/<int:pk>', views.OrderDetail.as_view()),  
+    path('rest/api/orders/create_order/', views_custom.CreateOrder),                   # Custom endpoints
 
     # Order Items
     path('rest/api/items/', views.OrderItemList.as_view()),          

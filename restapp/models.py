@@ -79,9 +79,9 @@ class Restaurant(models.Model):
     rest_address = models.CharField(max_length = 120)                                   #Example: 34, Street A, City B - 123456
     rest_location_code = models.CharField(max_length = 8)                               #Example: RTM
     # rest_location_code = models.ForeignKey('Station', on_delete=models.SET_NULL, null=True)  
-    user_id = models.CharField(max_length = 6,default="-")                               #Example: UID002
-    contact_person = models.CharField(max_length = 40,default="-")                       #Example: Jatin Kumar
-    contact_no = models.CharField(max_length = 10,default="-")                           #Example: 9812398123
+    rest_owner = models.CharField(max_length = 6,default="-")                           #Example: UID002
+    contact_person = models.CharField(max_length = 40,default="-")                      #Example: Jatin Kumar
+    contact_no = models.CharField(max_length = 10,default="-")                          #Example: 9812398123
     REST_TYPE = (
             ('0','Veg'),
             ('1','Non-Veg'),
@@ -95,7 +95,7 @@ class Restaurant(models.Model):
     rest_status = models.CharField(max_length = 1,choices=REST_STATUS, blank=False,default='1')  
 
     class Meta:
-        ordering = ['rest_name']
+        ordering = ['rest_id']
 
     def get_absolute_url(self):
         return reverse('restaurant-detail', args=[str(self.id)])   

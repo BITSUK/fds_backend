@@ -9,9 +9,11 @@ import json
 from restapp.models import AppUser
 from restapp.serializers import AppUserSerializer
 
-
+#============================================================================================
+# User registration using custom endpoint
+#============================================================================================
 @api_view(['POST'])
-def RegisterAPI(request):
+def RegisterUserAPI(request):
 	if request.method == 'POST':
 		new_user_data = JSONParser().parse(request)
 		
@@ -46,7 +48,9 @@ def RegisterAPI(request):
 		else:
 			return JsonResponse({'message': 'Check the registration details, not valid.'}, status=status.HTTP_204_NO_CONTENT)  
 
-
+#============================================================================================
+# Login 
+#============================================================================================
 @api_view(['GET'])
 def LoginAPI(request):
 	if request.method == 'GET':
@@ -73,6 +77,9 @@ def LoginAPI(request):
 		else:
 			return JsonResponse({'message': 'Invalid input, please check.'}, status=status.HTTP_204_NO_CONTENT)  
 
+#============================================================================================
+# Change password 
+#============================================================================================
 @api_view(['PUT'])
 def ChangePasswordAPI(request):
 	if request.method == 'PUT':

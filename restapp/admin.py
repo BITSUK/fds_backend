@@ -41,7 +41,7 @@ class RestaurantAdmin(admin.ModelAdmin):
                     'rest_name', 
                     'rest_address', 
                     'rest_location_code', 
-                    'user_id', 
+                    'rest_owner', 
                     'rest_type',
                     'rest_status', 
                     'rest_rating',
