@@ -1,7 +1,7 @@
 
 from django.contrib.auth.models import User, Group
 from restapp.models import AppUser, Train, Station, Stop, Restaurant, RestMenu, Order, OrderItem, Payment
-
+from rest_framework.generics import GenericAPIView
 from restapp.serializers import AppUserSerializer, SysUserSerializer, SysGroupSerializer
 from restapp.serializers import TrainSerializer, StationSerializer, StopSerializer
 from restapp.serializers import RestaurantSerializer, RestMenuSerializer
@@ -12,6 +12,9 @@ from restapp.serializers import OrderSerializer, OrderItemSerializer, PaymentSer
 #===================================================================
 
 from rest_framework import generics
+
+class API(GenericAPIView):
+    serializer_class = AppUserSerializer
 
 # User (App User)
 class AppUserList(generics.ListCreateAPIView):
