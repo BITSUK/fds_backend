@@ -153,7 +153,7 @@ class Order(models.Model):
             ('0' , 'Initial'),
             ('1' , 'Paid'), 
             ('2' , 'Pending'),
-            ('3' , 'Accepted'),
+            ('3' , 'Confirmed'),
             ('4' , 'Rejected'),
             ('5' , 'Preparing Food'),
             ('6' , 'Order Ready'),
