@@ -70,6 +70,7 @@ class RestaurantList(generics.ListCreateAPIView):
         rating = self.request.query_params.get('rest_rating', None)
         status = self.request.query_params.get('rest_status', None)
         owner = self.request.query_params.get('rest_owner', None)
+        rest = self.request.query_params.get('rest_id', None)
         if (station is not None):
             queryset = queryset.filter(rest_location_code = station)
         if (type is not None):
@@ -80,6 +81,8 @@ class RestaurantList(generics.ListCreateAPIView):
             queryset = queryset.filter(rest_status = status)
         if (owner is not None):
             queryset = queryset.filter(rest_owner = status)
+        if (rest is not None):
+            queryset = queryset.filter(rest_id = rest)
         return queryset
 
 class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
