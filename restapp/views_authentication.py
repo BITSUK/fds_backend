@@ -100,18 +100,17 @@ def ChangePasswordAPI(request):
 		user_data = JSONParser().parse(request)
 
 		user_id = user_data['user_id']
-		user_old_password = user_data['user_old_password']	
-		user_role = user_data['user_role']	
+		user_new_password = user_data['user_new_password']	
 
-		if user_id is not None and user_role is not None:
+		if user_id is not None:
 			users = AppUser.objects.all()
 			users = users.filter(user_id__icontains=user_id)		
-			users = users.filter(user_password__icontains=user_old_password)
-			users = users.filter(user_role__icontains=user_role)
 			
 			if(len(users) == 1):
-				serializer = AppUserSerializer(users, many=True)
-				return JsonResponse(serializer.data, safe=False)
+				obj = AppUser.objects.get(pk=users[0].id)
+				obj.user_password = user_new_password
+				obj.save()
+				return JsonResponse({'message': 'Password updated successfully.'}, status=status.HTTP_200_OK)
 			else:
 				return JsonResponse({'message': 'Invalid credentials, try again.'}, status=status.HTTP_204_NO_CONTENT)       
 		else:

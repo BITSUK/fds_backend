@@ -18,8 +18,13 @@ class API(GenericAPIView):
 
 # User (App User)
 class AppUserList(generics.ListCreateAPIView):
-    queryset = AppUser.objects.all()
     serializer_class = AppUserSerializer
+    def get_queryset(self):
+        queryset = AppUser.objects.all()
+        user = self.request.query_params.get('user_id', None)
+        if (user is not None):
+            queryset = queryset.filter(user_id = user)
+        return queryset
 
 class AppUserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = AppUser.objects.all()
