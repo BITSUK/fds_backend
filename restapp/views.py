@@ -117,6 +117,7 @@ class OrderList(generics.ListCreateAPIView):
         rest = self.request.query_params.get('rest_id', None)
         station = self.request.query_params.get('station_code', None)
         status = self.request.query_params.get('order_status', None)
+        order = self.request.query_params.get('order_id', None)
         if (user is not None):
             queryset = queryset.filter(user_id = user)
         if (rest is not None):
@@ -125,6 +126,8 @@ class OrderList(generics.ListCreateAPIView):
             queryset = queryset.filter(station_code = station)
         if (status is not None):
             queryset = queryset.filter(order_status = status)
+        if (order is not None):
+            queryset = queryset.filter(order_id = order)
         return queryset
 
 class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
