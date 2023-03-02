@@ -100,8 +100,11 @@ class RestMenuList(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = RestMenu.objects.all()
         rest = self.request.query_params.get('rest_id', None)
+        menu = self.request.query_params.get('menu_id', None)
         if (rest is not None):
             queryset = queryset.filter(rest_id = rest)
+        if (menu is not None):
+            queryset = queryset.filter(menu_id = menu)
         return queryset
 
 class RestMenuDetail(generics.RetrieveUpdateDestroyAPIView):
