@@ -151,11 +151,9 @@ class Order(models.Model):
     seat_no = models.IntegerField(default=0)                                            #Example: 22
     ORDER_STATUS = (
             ('0' , 'Initial'),
-            ('1' , 'Paid'), 
             ('2' , 'Pending'),
             ('3' , 'Confirmed'),
             ('4' , 'Rejected'),
-            ('5' , 'Preparing Food'),
             ('6' , 'Order Ready'),
             ('7' , 'In Transit'),
             ('8' , 'Delivered'),
