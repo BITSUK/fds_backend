@@ -1,8 +1,9 @@
 from django.contrib import admin
 from .models import AppUser, Train, Station, Stop, Restaurant, RestMenu, Order, OrderItem, Payment
 
+# =======================================================
 # Controls the fields to display in admin panel
-
+# =======================================================
 class AppUserAdmin(admin.ModelAdmin):
     list_display = ('id',
                     'user_id', 
@@ -104,7 +105,9 @@ class PaymentAdmin(admin.ModelAdmin):
                     'payment_status'
                     )
 
+# =================================================
 # Register the models
+# =================================================
 admin.site.register(AppUser, AppUserAdmin)
 admin.site.register(Train, TrainAdmin)
 admin.site.register(Station, StationAdmin)

@@ -30,12 +30,8 @@ def RegisterUserAPI(request):
 			rests = Restaurant.objects.all()
 			rests = rests.filter(rest_id__icontains = rest_id) 
 
-			# last_uid = users.reverse()[0].user_id
-			# next_uid = last_uid[0:3] + str(int(last_uid[3:]) + 1)
-			# user_id = next_uid
-
-			if (len(users) == 0) :	                                # Check if record already exists
-				if (user_role == "1" or user_role == "2"):			# Validate role
+			if (len(users) == 0) :	                                                    # Check if record already exists
+				if (user_role == "1" or user_role == "2"):			                    # Validate role
 					serializer = AppUserSerializer(data=new_user_data)					
 					if serializer.is_valid():
 
@@ -53,11 +49,11 @@ def RegisterUserAPI(request):
 					else:
 						return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 				else:
-					return JsonResponse({'message': 'Role Not supported.'}, status=status.HTTP_400_BAD_REQUEST)       	
+					return JsonResponse({'message': 'Role not supported.'}, status=status.HTTP_400_BAD_REQUEST)       	
 			else:
 				return JsonResponse({'message': 'User already exists.'}, status=status.HTTP_400_BAD_REQUEST) 
 		else:
-			return JsonResponse({'message': 'Check the registration details, not valid.'}, status=status.HTTP_400_BAD_REQUEST)  
+			return JsonResponse({'message': 'Check the registration details, as not valid.'}, status=status.HTTP_400_BAD_REQUEST)  
 
 #============================================================================================
 # Login 
@@ -68,11 +64,6 @@ def LoginAPI(request):
 		user_id = request.query_params.get('user_id', None)
 		user_password = request.query_params.get('user_password', None)
 		user_role = request.query_params.get('user_role', None)
-
-		# user_data = JSONParser().parse(request)
-		# user_id = user_data['user_id']
-		# user_password = user_data['user_password']	
-		# user_role = user_data['user_role']	
 
 		if user_id is not None and user_password is not None and user_role is not None:	
 			users = AppUser.objects.all()
@@ -85,7 +76,7 @@ def LoginAPI(request):
 					res = JsonResponse(serializer.data, safe=False)
 					return res
 				else:
-					return JsonResponse({'message': 'Role Not supported.'}, status=status.HTTP_204_NO_CONTENT)       	
+					return JsonResponse({'message': 'Role not supported.'}, status=status.HTTP_204_NO_CONTENT)       	
 			else:
 				return JsonResponse({'message': 'Invalid credentials, try again.'}, status=status.HTTP_204_NO_CONTENT)       
 		else:

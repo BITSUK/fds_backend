@@ -1,9 +1,10 @@
 from rest_framework import serializers
-
 from django.contrib.auth.models import User, Group
 from restapp.models import AppUser, Train, Station, Stop, Restaurant, RestMenu, Order, OrderItem, Payment
 
+# ============================================================
 # App User 
+# ============================================================
 class AppUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppUser
@@ -15,8 +16,9 @@ class AppUserSerializer(serializers.ModelSerializer):
                   'user_password',
                   'user_role', 
                   ]
-
+# ============================================================
 # Train
+# ============================================================
 class TrainSerializer(serializers.ModelSerializer):
     class Meta:        
         model = Train
@@ -24,8 +26,9 @@ class TrainSerializer(serializers.ModelSerializer):
                   'train_no',
                   'train_name'
                   ]        
-
+# ============================================================
 # Station
+# ============================================================
 class StationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Station
@@ -33,8 +36,9 @@ class StationSerializer(serializers.ModelSerializer):
                   'station_code', 
                   'station_name'
                   ]        
-
+# ============================================================
 # Stop
+# ============================================================
 class StopSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stop
@@ -47,8 +51,9 @@ class StopSerializer(serializers.ModelSerializer):
                   'halt', 
                   'day'
                   ]    
-
+# ============================================================
 # Restaurant
+# ============================================================
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
@@ -64,8 +69,9 @@ class RestaurantSerializer(serializers.ModelSerializer):
                   'rest_status', 
                   'rest_rating',
                   ]   
-
+# ============================================================
 # Restaurant Menu
+# ============================================================
 class RestMenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = RestMenu
@@ -80,8 +86,9 @@ class RestMenuSerializer(serializers.ModelSerializer):
                   'item_rating', 
                   'item_status'
                   ]  
-
+# ============================================================
 # Order
+# ============================================================
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
@@ -103,8 +110,9 @@ class OrderSerializer(serializers.ModelSerializer):
                   'tax', 
                   'net_amount'
                   ]  
-
+# ============================================================
 # Order Item
+# ============================================================
 class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
@@ -116,8 +124,9 @@ class OrderItemSerializer(serializers.ModelSerializer):
                   'item_discount', 
                   'order_id'
                   ]  
-
+# ============================================================
 # Payment
+# ============================================================
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
@@ -130,8 +139,10 @@ class PaymentSerializer(serializers.ModelSerializer):
                   'payment_ref',
                   'payment_status'
                   ]  
-        
-# System User (Django Default)
+# ====================================================================        
+# System User  (Django Default)
+# Note: - Its exposed for learning purpose, as such not using it.
+# ====================================================================
 class SysUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -142,8 +153,10 @@ class SysUserSerializer(serializers.ModelSerializer):
                   'email', 
                   'groups'
                   ]
-        
+# ====================================================================
 # System User (Django Default)
+# Note: - Its exposed for learning purpose, as such not using it.
+# ====================================================================
 class SysGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
