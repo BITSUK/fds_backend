@@ -23,17 +23,18 @@ To run the project you need Node and npm installed.
 7. pip install django-cors-headers
 8. pip install psycopg2    
 9. pip install -U drf-yasg
-10. Run the backend server
+10. Run the backend server  
 
-python manage.py runserver
+    python manage.py runserver
 
-First time tasks
-  python manage.py makemigrations
-  python manage.py migrate
-  
-  python manage.py createsuperuser
-  id: admin
-  pwd: admin
+First time tasks  
+
+  python manage.py makemigrations  
+  python manage.py migrate  
+   
+  python manage.py createsuperuser  
+  id: admin  
+  pwd: admin  
 
 11) Ports
   http://127.0.0.1:8000/
