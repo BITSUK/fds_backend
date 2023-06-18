@@ -14,8 +14,8 @@ To run the project you need Node and npm installed.
 1. Download or clone from git Hub
 2. Create a python virtal environment using virtualenvwrapper-win
 
-    mkvirtualenv fdsenv		
-		workon fdsenv
+    mkvirtualenv fdsenv
+    workon fdsenv
     
 4. Install packages:
 5. pip install django
@@ -29,15 +29,15 @@ python manage.py runserver
 
 First time tasks
   python manage.py makemigrations
-	python manage.py migrate
+  python manage.py migrate
   
   python manage.py createsuperuser
-  id: admin       
-	pwd: admin
+  id: admin
+  pwd: admin
 
 11) Ports
   http://127.0.0.1:8000/
-	http://127.0.0.1:8000/admin/
+  http://127.0.0.1:8000/admin/
 
 ## Test users
 
