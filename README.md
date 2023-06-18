@@ -31,7 +31,7 @@ To run the project you need Node and npm installed.
   python manage.py makemigrations  
   python manage.py migrate  
   
-11) Ports   
+11. Ports   
   http://127.0.0.1:8000/  
   http://127.0.0.1:8000/admin/  
     
