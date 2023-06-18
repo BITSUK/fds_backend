@@ -14,7 +14,7 @@ To run the project you need Node and npm installed.
 1. Download or clone from git Hub
 2. Create a python virtal environment using virtualenvwrapper-win
 
-    mkvirtualenv fdsenv
+    mkvirtualenv fdsenv  
     workon fdsenv
     
 4. Install packages:
