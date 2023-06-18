@@ -26,11 +26,7 @@ To run the project you need Node and npm installed.
 10. Run the backend server  
 
     python manage.py runserver
-
-#One time tasks  
-  python manage.py makemigrations  
-  python manage.py migrate  
-  
+ 
 11. Ports   
   http://127.0.0.1:8000/  
   http://127.0.0.1:8000/admin/  
@@ -47,5 +43,8 @@ To run the project you need Node and npm installed.
 2. RID001 (Restaurant) - password: BITS2023$
 3. admin - password: BITS2023$
 
+## One time tasks  
+  python manage.py makemigrations  
+  python manage.py migrate  
 ### End of File
 
