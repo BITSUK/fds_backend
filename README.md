@@ -23,7 +23,8 @@ To run the project you need Node and npm installed.
 7. pip install django-cors-headers
 8. pip install psycopg2    
 9. pip install -U drf-yasg
-10. Run the backend server  
+10. pip install coreapi pyyaml
+11. Run the backend server  
 
     python manage.py runserver
  
