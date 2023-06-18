@@ -37,6 +37,9 @@ To run the project you need Node and npm installed.
     
   Endpoints Get Trains  
   http://127.0.0.1:8000/fds/rest/api/trains  
+  
+  Swagger endpoint  
+  http://127.0.0.1:8000/swagger/
 
 ## Test users
 
