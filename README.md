@@ -13,13 +13,31 @@ To run the project you need Node and npm installed.
 
 1. Download or clone from git Hub
 2. Create a python virtal environment using virtualenvwrapper-win
-3. Install packages:
-4. pip install django
-5. pip install djangorestframework
-6. pip install django-cors-headers
-7. pip install psycopg2    
-8. pip install -U drf-yasg
-9. Run the backend server
+
+    mkvirtualenv fdsenv		
+		workon fdsenv
+    
+4. Install packages:
+5. pip install django
+6. pip install djangorestframework
+7. pip install django-cors-headers
+8. pip install psycopg2    
+9. pip install -U drf-yasg
+10. Run the backend server
+
+python manage.py runserver
+
+First time tasks
+  python manage.py makemigrations
+	python manage.py migrate
+  
+  python manage.py createsuperuser
+  id: admin       
+	pwd: admin
+
+11) Ports
+  http://127.0.0.1:8000/
+	http://127.0.0.1:8000/admin/
 
 ## Test users
 
