@@ -1,6 +1,6 @@
 # Food Delivery Service - Backend Server App
 
-This project is a DRF API app created as part of Assignment 3 of FSE Web Development Course.
+This project is a DRF API app created as part of Assignment 3 of FSE.
 
 ## Developers - Group4
 - Umesh Kumar Sharma (Student Id: 2022CFSE006)
