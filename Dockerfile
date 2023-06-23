@@ -11,7 +11,7 @@ ENV PYTHONUNBUFFERED 1
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
-pip install ez_setup
+RUN pip install ez_setup
 COPY ./requirements.txt /fds/app
 RUN pip install -r requirements.txt
 
