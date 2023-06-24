@@ -13,8 +13,14 @@ ENV PYTHONUNBUFFERED 1
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install ez_setup
-COPY ./requirements.txt /fds/app
-RUN pip install -r requirements.txt
+RUN pip install django
+RUN pip install djangorestframework
+RUN pip install django-cors-headers
+RUN pip install psycopg2
+RUN pip install -U drf-yasg
+RUN pip install coreapi pyyaml
+#COPY ./requirements.txt /fds/app
+#RUN pip install -r requirements.txt
 
 # copy project
 COPY . /fds/app
