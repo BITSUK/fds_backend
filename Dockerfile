@@ -1,5 +1,6 @@
 # pull the official base image
-FROM python:3.11.3-alpine
+#FROM python:3.11.3-alpine
+FROM python:3.8.3-alpine
 
 # set work directory
 WORKDIR /fds/app
