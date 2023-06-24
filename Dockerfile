@@ -13,7 +13,6 @@ ENV PYTHONUNBUFFERED 1
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install ez_setup
-RUN pip install django
 RUN pip install django==4.2.1
 RUN pip install djangorestframework==3.14.0
 RUN pip install django-cors-headers==4.1.0
