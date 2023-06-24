@@ -16,6 +16,9 @@ RUN pip install --upgrade setuptools
 RUN pip install django==4.2.1
 RUN pip install djangorestframework==3.14.0
 RUN pip install django-cors-headers==4.1.0
+RUN apt-get update
+RUN apt-get install libpq-dev python-dev-is-python3
+RUN pip install psycopg2
 RUN pip install psycopg2==2.9.6
 #RUN pip install -U drf-yasg
 #RUN pip install coreapi pyyaml
