@@ -12,13 +12,13 @@ ENV PYTHONUNBUFFERED 1
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
-RUN pip install ez_setup
+#RUN pip install ez_setup
 RUN pip install django==4.2.1
 RUN pip install djangorestframework==3.14.0
 RUN pip install django-cors-headers==4.1.0
 RUN pip install psycopg2==2.9.6
-RUN pip install -U drf-yasg
-RUN pip install coreapi pyyaml
+#RUN pip install -U drf-yasg
+#RUN pip install coreapi pyyaml
 #COPY ./requirements.txt /fds/app
 #RUN pip install -r requirements.txt
 
