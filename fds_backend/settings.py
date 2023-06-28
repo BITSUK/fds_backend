@@ -132,5 +132,5 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-  'http://localhost:3000', 'http://13.51.168.239:8000'
+  'http://localhost:3000', 'http://13.53.121.70:8000'
 )
